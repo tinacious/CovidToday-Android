@@ -4,6 +4,8 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.tinaciousdesign.covidtoday.data.Country;
 import com.tinaciousdesign.covidtoday.data.SortCriteria;
 import com.tinaciousdesign.covidtoday.networking.ApiService;
@@ -16,6 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CountriesRepository {
     private static final String TAG = "CountriesRepository";
@@ -26,9 +29,13 @@ public class CountriesRepository {
     MutableLiveData<List<Country>> countries = new MutableLiveData<>();
 
     private CountriesRepository() {
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
         Retrofit mRetrofit = new Retrofit.Builder()
-                .baseUrl("https://diseash.sh/")
+//                .baseUrl("http://disease.sh/")
+                .baseUrl("http://disease.sh/v2/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
+
         mApiService = mRetrofit.create(ApiService.class);
     }
 
@@ -39,7 +46,22 @@ public class CountriesRepository {
         return countriesRepository;
     }
 
-    public void fetchData(SortCriteria sortCriteria) {
+//    public void fetchData(SortCriteria sortCriteria) {
+//        Call<List<Country>> call =  mApiService.getCountries(sortCriteria);
+//        call.enqueue(new Callback<List<Country>>() {
+//            @Override
+//            public void onResponse(@NotNull Call<List<Country>> call, @NotNull Response<List<Country>> response) {
+//                countries.setValue(response.body());
+//            }
+//
+//            @Override
+//            public void onFailure(@NotNull Call<List<Country>> call, @NotNull Throwable t) {
+//                Log.e(TAG, t.getMessage());
+//            }
+//        });
+//    }
+
+    public MutableLiveData<List<Country>>getCountries(SortCriteria sortCriteria) {
         Call<List<Country>> call =  mApiService.getCountries(sortCriteria);
         call.enqueue(new Callback<List<Country>>() {
             @Override
@@ -52,9 +74,7 @@ public class CountriesRepository {
                 Log.e(TAG, t.getMessage());
             }
         });
-    }
 
-    public MutableLiveData<List<Country>>getCountries() {
         return this.countries;
     }
 }

@@ -11,5 +11,5 @@ class AppFragmentStateAdapter(activity: FragmentActivity): FragmentStateAdapter(
 
     override fun getItemCount(): Int = getTabs(mActivity).size
 
-    override fun createFragment(position: Int): Fragment = PageFragment()
+    override fun createFragment(position: Int): Fragment = PageFragment.getInstance(position)
 }
