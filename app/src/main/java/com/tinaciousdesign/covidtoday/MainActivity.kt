@@ -1,30 +1,40 @@
 package com.tinaciousdesign.covidtoday
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.ViewPager
-import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import com.tinaciousdesign.covidtoday.ui.main.SectionsPagerAdapter
+import com.google.android.material.tabs.TabLayoutMediator
+import com.tinaciousdesign.covidtoday.data.getTabs
+import com.tinaciousdesign.covidtoday.ui.main.AppFragmentStateAdapter
+import com.tinaciousdesign.covidtoday.ui.main.PageFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : FragmentActivity() {
+    private lateinit var mViewPager: ViewPager2
+    private lateinit var mTabTexts: List<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.tabs)
-        tabs.setupWithViewPager(viewPager)
-        val fab: FloatingActionButton = findViewById(R.id.fab)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+        // View pager
+        mViewPager = findViewById(R.id.pager)
+        val adapter = AppFragmentStateAdapter(this)
+        mViewPager.adapter = adapter
+
+        // Tabs
+        mTabTexts = getTabs(this)
+        val tabLayout: TabLayout = findViewById(R.id.tabs)
+        TabLayoutMediator(tabLayout, mViewPager) { tab, position ->
+            tab.text = mTabTexts[position]
+        }.attach()
+    }
+
+    override fun onBackPressed() {
+        if (mViewPager.currentItem == 0) return super.onBackPressed()
+        mViewPager.currentItem = mViewPager.currentItem - 1
     }
 }
