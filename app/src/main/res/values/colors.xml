@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="crimson">#EE005F</color>
+    <color name="burgundy">#73002E</color>
+
+    <color name="evening_purple">#2E0AAF</color>
+    <color name="seafoam">#0AAAAF</color>
+</resources>
