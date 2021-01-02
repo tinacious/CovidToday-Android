@@ -37,9 +37,7 @@ class MainActivity : FragmentActivity() {
         }.attach()
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        mainViewModel
-            .fetchCountriesForSortCriteria(SortCriteria.TodayCases)
-            .observe(this, {
+        mainViewModel.countries.observe(this, {
             Log.d(TAG, "Here 1 - ${it?.size}")
         })
     }
