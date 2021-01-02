@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 
 interface ApiService {
-    @GET("/v2/countries")
+    @GET("countries")
     fun getCountries(@Query("sort") sortCriteria: String): Call<List<Country>>
 }
 

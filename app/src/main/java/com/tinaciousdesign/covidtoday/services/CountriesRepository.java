@@ -4,10 +4,9 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.tinaciousdesign.covidtoday.data.Country;
 import com.tinaciousdesign.covidtoday.data.SortCriteria;
+import com.tinaciousdesign.covidtoday.networking.ApiClient;
 import com.tinaciousdesign.covidtoday.networking.ApiService;
 
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +18,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CountriesRepository {
     private static final String TAG = "CountriesRepository";
@@ -30,14 +28,8 @@ public class CountriesRepository {
     MutableLiveData<List<Country>> mutableLiveData = new MutableLiveData<>();
 
     private CountriesRepository() {
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
-        Retrofit mRetrofit = new Retrofit.Builder()
-                .baseUrl("https://corona.lmao.ninja/")
-//                .baseUrl("http://disease.sh/")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        mApiService = mRetrofit.create(ApiService.class);
+        Retrofit retrofit = ApiClient.getInstance();
+        mApiService = retrofit.create(ApiService.class);
     }
 
     public static CountriesRepository getInstance() {
@@ -64,8 +56,4 @@ public class CountriesRepository {
 
         return this.mutableLiveData;
     }
-
-//    public Call<List<Country>> getCountries(SortCriteria sortCriteria) {
-//        return  mApiService.getCountries(sortCriteria.getStringValue());
-//    }
 }
