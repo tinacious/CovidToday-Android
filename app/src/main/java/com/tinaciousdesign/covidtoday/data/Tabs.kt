@@ -16,3 +16,15 @@ fun getTabs(context: Context): List<String> {
         context.getString(R.string.tab_deathsPerOneMillion)
     )
 }
+
+enum class TabIndex {
+    CASES_TODAY,
+    DEATHS_TODAY,
+    ALL_CASES,
+    ALL_DEATHS,
+    RECOVERED,
+    ACTIVE,
+    CRITICAL,
+    CASES_PER_MILLION,
+    DEATHS_PER_MILLION
+}

@@ -1,7 +1,6 @@
 package com.tinaciousdesign.covidtoday.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,17 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.tinaciousdesign.covidtoday.R
 import com.tinaciousdesign.covidtoday.adapters.CountriesAdapter
+import com.tinaciousdesign.covidtoday.data.Country
+import com.tinaciousdesign.covidtoday.data.TabIndex
 import com.tinaciousdesign.covidtoday.databinding.FragmentPageBinding
 import com.tinaciousdesign.covidtoday.viewmodels.MainViewModel
 
 
 class PageFragment private constructor(): Fragment() {
 
-//    private lateinit var testingText: TextView
     private lateinit var mMainViewModel: MainViewModel
-
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: CountriesAdapter
 
@@ -44,14 +42,7 @@ class PageFragment private constructor(): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val position = requireArguments().getInt(BUNDLE_EXTRA_POSITION)
-        currentPosition = position
-
-//        val tab = getTabs(requireContext())[position]
-//        Log.d(TAG, "tab: $tab")
-
-//        testingText = view.findViewById(R.id.testingText)
-//        testingText.text = "tab: $tab at $position"
+        currentPosition = requireArguments().getInt(BUNDLE_EXTRA_POSITION)
 
         initViews(view)
 
@@ -66,7 +57,6 @@ class PageFragment private constructor(): Fragment() {
     ): View {
         _binding = FragmentPageBinding.inflate(inflater, container, false)
         return binding.root
-//        return inflater.inflate(R.layout.fragment_page, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -77,8 +67,8 @@ class PageFragment private constructor(): Fragment() {
 
     private fun initObservers() {
         mMainViewModel.countries.observe(requireActivity(), {
-            Log.d(TAG, "Here 2 - ${it?.size}")
-            mAdapter.updateData(it)
+            val sorted = sortCountriesForTab(it)
+            mAdapter.updateData(sorted)
 
             if (it.isNotEmpty()) {
                binding.loader.visibility = View.GONE
@@ -100,4 +90,18 @@ class PageFragment private constructor(): Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun sortCountriesForTab(countries: List<Country>): List<Country> =
+        when(currentPosition) {
+            TabIndex.CASES_TODAY.ordinal -> countries.sortedByDescending { it.todayCases }
+            TabIndex.DEATHS_TODAY.ordinal -> countries.sortedByDescending { it.todayDeaths }
+            TabIndex.ALL_CASES.ordinal -> countries.sortedByDescending { it.cases }
+            TabIndex.ALL_DEATHS.ordinal -> countries.sortedByDescending { it.deaths }
+            TabIndex.RECOVERED.ordinal -> countries.sortedByDescending { it.recovered }
+            TabIndex.ACTIVE.ordinal -> countries.sortedByDescending { it.active }
+            TabIndex.CRITICAL.ordinal -> countries.sortedByDescending { it.critical }
+            TabIndex.CASES_PER_MILLION.ordinal -> countries.sortedByDescending { it.casesPerOneMillion }
+            TabIndex.DEATHS_PER_MILLION.ordinal -> countries.sortedByDescending { it.deathsPerOneMillion }
+            else -> countries
+        }
 }

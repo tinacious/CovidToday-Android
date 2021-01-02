@@ -141,6 +141,37 @@
                     tools:text="1,000,123" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- todayDeaths -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingVertical="@dimen/card_row_cell_vertical"
+                android:paddingHorizontal="@dimen/card_row_cell_horizontal">
+
+                <TextView
+                    android:id="@+id/todayDeathsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/todayDeaths"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/todayDeaths"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1,000,123" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <!-- recovered -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:orientation="horizontal"

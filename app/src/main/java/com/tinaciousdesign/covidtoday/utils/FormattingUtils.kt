@@ -5,7 +5,7 @@ import java.util.*
 import kotlin.math.roundToInt
 
 
-fun formatFloatWithThousandsDelimiter(value: Float, locale: Locale): String {
+fun formatFloatForLocale(value: Float, locale: Locale): String {
     val numberFormat = NumberFormat.getInstance(locale)
     val intValue = value.roundToInt()
 

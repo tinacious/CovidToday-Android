@@ -8,15 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tinaciousdesign.covidtoday.data.Country
 import com.tinaciousdesign.covidtoday.databinding.CountryCardBinding
-import com.tinaciousdesign.covidtoday.utils.formatFloatWithThousandsDelimiter
+import com.tinaciousdesign.covidtoday.utils.formatFloatForLocale
 import java.util.*
 
 class CountriesAdapter() : RecyclerView.Adapter<CountriesAdapter.CountriesViewHolder>() {
     var data = mutableListOf<Country>()
 
     private lateinit var viewBinding: CountryCardBinding
-    //    private lateinit var mCountryNameView: TextView
-//    private lateinit var mCountryImageView: ImageView
 
     fun updateData(newData: List<Country>) {
         data.clear()
@@ -27,10 +25,6 @@ class CountriesAdapter() : RecyclerView.Adapter<CountriesAdapter.CountriesViewHo
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountriesViewHolder {
         viewBinding = CountryCardBinding.inflate(LayoutInflater.from(parent.context))
         val itemView = viewBinding.root
-
-//        val itemView = LayoutInflater.from(parent.context)
-//            .inflate(R.layout.country_card, parent, false)
-
         return CountriesViewHolder(itemView)
     }
 
@@ -52,14 +46,15 @@ class CountriesAdapter() : RecyclerView.Adapter<CountriesAdapter.CountriesViewHo
                 .load(country.countryInfo.flag)
                 .into(viewBinding.countryImage)
 
-            viewBinding.totalCases.text = formatFloatWithThousandsDelimiter(country.cases, userLocale)
-            viewBinding.todayCases.text = formatFloatWithThousandsDelimiter(country.todayCases, userLocale)
-            viewBinding.deaths.text = formatFloatWithThousandsDelimiter(country.deaths, userLocale)
-            viewBinding.recovered.text = formatFloatWithThousandsDelimiter(country.recovered, userLocale)
-            viewBinding.active.text = formatFloatWithThousandsDelimiter(country.active, userLocale)
-            viewBinding.critical.text = formatFloatWithThousandsDelimiter(country.critical, userLocale)
-            viewBinding.casesPerOneMillion.text = formatFloatWithThousandsDelimiter(country.casesPerOneMillion, userLocale)
-            viewBinding.deathsPerOneMillion.text = formatFloatWithThousandsDelimiter(country.deathsPerOneMillion, userLocale)
+            viewBinding.totalCases.text = formatFloatForLocale(country.cases, userLocale)
+            viewBinding.todayCases.text = formatFloatForLocale(country.todayCases, userLocale)
+            viewBinding.deaths.text = formatFloatForLocale(country.deaths, userLocale)
+            viewBinding.todayDeaths.text = formatFloatForLocale(country.todayDeaths, userLocale)
+            viewBinding.recovered.text = formatFloatForLocale(country.recovered, userLocale)
+            viewBinding.active.text = formatFloatForLocale(country.active, userLocale)
+            viewBinding.critical.text = formatFloatForLocale(country.critical, userLocale)
+            viewBinding.casesPerOneMillion.text = formatFloatForLocale(country.casesPerOneMillion, userLocale)
+            viewBinding.deathsPerOneMillion.text = formatFloatForLocale(country.deathsPerOneMillion, userLocale)
         }
     }
 }
