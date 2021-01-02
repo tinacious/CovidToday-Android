@@ -1,5 +1,6 @@
 package com.tinaciousdesign.covidtoday.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,18 @@ class CountriesAdapter() : RecyclerView.Adapter<CountriesAdapter.CountriesViewHo
     }
 
     override fun getItemCount(): Int = data.size
+
+    override fun getItemId(position: Int): Long {
+        val country = data[position]
+        Log.i(TAG, "getItemId() called with: position = $position, country: ${country.country}, country id: ${country.countryInfo._id}")
+        return country.countryInfo._id.toLong()
+    }
+
+    override fun getItemViewType(position: Int): Int = position
+
+    companion object {
+        private const val TAG = "CountriesAdapter"
+    }
 
 
     inner class CountriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

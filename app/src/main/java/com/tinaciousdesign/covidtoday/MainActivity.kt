@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.tinaciousdesign.covidtoday.data.SortCriteria
 import com.tinaciousdesign.covidtoday.data.getTabs
 import com.tinaciousdesign.covidtoday.ui.main.AppFragmentStateAdapter
 import com.tinaciousdesign.covidtoday.viewmodels.MainViewModel
