@@ -79,6 +79,12 @@ class PageFragment private constructor(): Fragment() {
         mMainViewModel.countries.observe(requireActivity(), {
             Log.d(TAG, "Here 2 - ${it?.size}")
             mAdapter.updateData(it)
+
+            if (it.isNotEmpty()) {
+               binding.loader.visibility = View.GONE
+            } else {
+               binding.loader.visibility = View.VISIBLE
+            }
         })
     }
 
