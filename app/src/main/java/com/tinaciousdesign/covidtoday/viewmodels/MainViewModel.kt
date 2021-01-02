@@ -24,13 +24,14 @@ class MainViewModel: ViewModel() {
     init {
         Log.d(TAG, "Calling init")
 //        repository.fetchData(SortCriteria.TodayCases)
-        getCountries(SortCriteria.TodayCases)
+        fetchCountriesForSortCriteria(SortCriteria.TodayCases)
     }
 
 //    private val _countries = LiveData<List<Country>>()
 //    fun getCountries(sortCriteria: SortCriteria): LiveData<List<Country>> {
-    fun getCountries(sortCriteria: SortCriteria) {
-        _countries = repository.getCountries(sortCriteria)
+    fun fetchCountriesForSortCriteria(sortCriteria: SortCriteria): LiveData<List<Country>> {
+        _countries = repository.getMutableLiveData(sortCriteria)
+        return _countries
     }
 
 //    val countries: LiveData<List<Country>>

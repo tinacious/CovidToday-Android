@@ -12,6 +12,7 @@ import com.tinaciousdesign.covidtoday.R
 import com.tinaciousdesign.covidtoday.data.getTabs
 import com.tinaciousdesign.covidtoday.viewmodels.MainViewModel
 
+
 class PageFragment private constructor(): Fragment() {
 
     private lateinit var testingText: TextView
@@ -20,6 +21,8 @@ class PageFragment private constructor(): Fragment() {
     companion object {
         private const val TAG = "PageFragment"
         const val BUNDLE_EXTRA_POSITION = "position"
+
+        private var currentPosition: Int = -1
 
         fun getInstance(position: Int): Fragment {
             val pageFragment = PageFragment()
@@ -30,16 +33,11 @@ class PageFragment private constructor(): Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_page, container, false)
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val position = requireArguments().getInt(BUNDLE_EXTRA_POSITION)
+        currentPosition = position
 
         testingText = view.findViewById(R.id.testingText)
 
@@ -50,6 +48,14 @@ class PageFragment private constructor(): Fragment() {
 
         mMainViewModel = ViewModelProvider(requireActivity())
             .get(MainViewModel::class.java)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return inflater.inflate(R.layout.fragment_page, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
