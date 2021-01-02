@@ -5,11 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.ConfigurationCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tinaciousdesign.covidtoday.R
 import com.tinaciousdesign.covidtoday.data.Country
 import com.tinaciousdesign.covidtoday.databinding.CountryCardBinding
+import com.tinaciousdesign.covidtoday.utils.FormattingUtils
+import java.util.*
 
 class CountriesAdapter() : RecyclerView.Adapter<CountriesAdapter.CountriesViewHolder>() {
     var data = mutableListOf<Country>()
@@ -45,6 +48,7 @@ class CountriesAdapter() : RecyclerView.Adapter<CountriesAdapter.CountriesViewHo
     inner class CountriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(country: Country) {
+            val userLocale: Locale = ConfigurationCompat.getLocales(itemView.resources.configuration)[0]
 //            itemView.findViewById<TextView>(R.id.countryName).apply {
 //                text = country.country
 //            }
@@ -59,7 +63,8 @@ class CountriesAdapter() : RecyclerView.Adapter<CountriesAdapter.CountriesViewHo
                 .load(country.countryInfo.flag)
                 .into(viewBinding.countryImage)
 
-            viewBinding.totalCases.text = "${country.cases}"
+            viewBinding.totalCases.text = FormattingUtils.formatFloatWithThousandsDelimiter(country.cases, userLocale)
+            viewBinding.todayCases.text = FormattingUtils.formatFloatWithThousandsDelimiter(country.todayCases, userLocale)
         }
     }
 }

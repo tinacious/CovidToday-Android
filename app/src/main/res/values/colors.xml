@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="lighter_grey">#F6F6F6</color>
+
+    <color name="grey50">#fafafa</color>
+    <color name="grey100">#f5f5f5</color>
+    <color name="grey200">#eeeeee</color>
+    <color name="grey300">#e0e0e0</color>
+    <color name="grey400">#bdbdbd</color>
+
+
+    <color name="steel_grey">#767C9D</color>
+<!--    <color name="grey">#767C9D</color>-->
+
     <color name="white">#FFFFFFFF</color>
 
     <color name="crimson">#EE005F</color>

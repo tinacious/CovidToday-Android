@@ -10,7 +10,7 @@
     <dimen name="card_width">280dp</dimen>
     <dimen name="card_image_height">140dp</dimen>
     <dimen name="card_title_cell_padding">8dp</dimen>
-    <dimen name="card_row_cell_horizontal">8dp</dimen>
-    <dimen name="card_row_cell_vertical">4dp</dimen>
+    <dimen name="card_row_cell_horizontal">10dp</dimen>
+    <dimen name="card_row_cell_vertical">6dp</dimen>
 
 </resources>

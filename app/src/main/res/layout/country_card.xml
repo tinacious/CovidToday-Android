@@ -6,11 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    tools:background="@color/grey100"
     android:layout_gravity="center_horizontal">
 
     <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="@dimen/card_width"
         android:layout_height="wrap_content"
+        card_view:cardElevation="3dp"
         android:layout_marginStart="@dimen/card_margin"
         android:layout_marginTop="@dimen/card_margin"
         android:layout_marginEnd="@dimen/card_margin"
@@ -43,6 +46,10 @@
                 android:background="@color/cardview_dark_background"
             />
 
+            <!-- Upper padding -->
+            <View android:layout_width="wrap_content" android:layout_height="6dp" />
+
+            <!-- total cases -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -54,6 +61,7 @@
                     android:id="@+id/totalCasesLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="@string/cases"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -63,13 +71,236 @@
                     android:id="@+id/totalCases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text=""
                     android:textAlignment="textEnd"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="1,000,123" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- cases today -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingVertical="@dimen/card_row_cell_vertical"
+                android:paddingHorizontal="@dimen/card_row_cell_horizontal">
+
+                <TextView
+                    android:id="@+id/todayCasesLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/todayCases"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/todayCases"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1,000,123" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- total deaths -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingVertical="@dimen/card_row_cell_vertical"
+                android:paddingHorizontal="@dimen/card_row_cell_horizontal">
+
+                <TextView
+                    android:id="@+id/deathsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/deaths"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/deaths"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1,000,123" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- recovered -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingVertical="@dimen/card_row_cell_vertical"
+                android:paddingHorizontal="@dimen/card_row_cell_horizontal">
+
+                <TextView
+                    android:id="@+id/recoveredLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recovered"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/recovered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1,000,123" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- active -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingVertical="@dimen/card_row_cell_vertical"
+                android:paddingHorizontal="@dimen/card_row_cell_horizontal">
+
+                <TextView
+                    android:id="@+id/activeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/active"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1,000,123" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- critical -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingVertical="@dimen/card_row_cell_vertical"
+                android:paddingHorizontal="@dimen/card_row_cell_horizontal">
+
+                <TextView
+                    android:id="@+id/criticalLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/critical"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/critical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1,000,123" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- casesPerOneMillion -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingVertical="@dimen/card_row_cell_vertical"
+                android:paddingHorizontal="@dimen/card_row_cell_horizontal">
+
+                <TextView
+                    android:id="@+id/casesPerOneMillionLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/casesPerOneMillion"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/casesPerOneMillion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1,000,123" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- deathsPerOneMillion -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingVertical="@dimen/card_row_cell_vertical"
+                android:paddingHorizontal="@dimen/card_row_cell_horizontal">
+
+                <TextView
+                    android:id="@+id/deathsPerOneMillionLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/deathsPerOneMillion"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/deathsPerOneMillion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1,000,123" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Lower padding -->
+            <View android:layout_width="wrap_content" android:layout_height="6dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <View android:layout_width="wrap_content" android:layout_height="8dp" />
 
 </LinearLayout>
