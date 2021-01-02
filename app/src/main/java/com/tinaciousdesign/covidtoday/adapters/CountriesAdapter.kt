@@ -43,20 +43,23 @@ class CountriesAdapter() : RecyclerView.Adapter<CountriesAdapter.CountriesViewHo
 
 
     inner class CountriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        private var mCountryNameView: TextView = view.findViewById(R.id.country_name)
-//        private var mCountryImageView: ImageView = view.findViewById(R.id.country_image)
 
         fun bind(country: Country) {
-            itemView.findViewById<TextView>(R.id.countryName).apply {
-                text = country.country
-            }
-            itemView.findViewById<ImageView>(R.id.countryImage).apply {
-                Glide.with(itemView.context)
-                    .load(country.countryInfo.flag)
-                    .into(this)
-            }
-//            viewBinding
-//            itemView
+//            itemView.findViewById<TextView>(R.id.countryName).apply {
+//                text = country.country
+//            }
+//            itemView.findViewById<ImageView>(R.id.countryImage).apply {
+//                Glide.with(itemView.context)
+//                    .load(country.countryInfo.flag)
+//                    .into(this)
+//            }
+            viewBinding.countryName.text = country.country
+
+            Glide.with(itemView.context)
+                .load(country.countryInfo.flag)
+                .into(viewBinding.countryImage)
+
+            viewBinding.totalCases.text = "${country.cases}"
         }
     }
 }

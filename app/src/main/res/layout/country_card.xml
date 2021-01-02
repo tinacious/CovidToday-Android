@@ -11,9 +11,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="@dimen/card_width"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="@dimen/card_margin"
+        android:layout_marginTop="@dimen/card_margin"
+        android:layout_marginEnd="@dimen/card_margin"
         android:layout_gravity="center_horizontal">
 
         <LinearLayout
@@ -37,11 +37,39 @@
                 android:layout_height="wrap_content"
                 tools:text="Canada"
                 android:textAlignment="center"
-                android:paddingVertical="4dp"
+                android:paddingVertical="@dimen/card_title_cell_padding"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:background="@color/cardview_dark_background"
             />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/card_row_cell_vertical"
+                android:paddingHorizontal="@dimen/card_row_cell_horizontal">
+
+                <TextView
+                    android:id="@+id/totalCasesLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cases"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/totalCases"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="textEnd"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1,000,123" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
 </LinearLayout>

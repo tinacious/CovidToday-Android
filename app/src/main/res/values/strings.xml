@@ -11,4 +11,15 @@
     <string name="tab_critical">Critical</string>
     <string name="tab_casesPerOneMillion">Cases per Million</string>
     <string name="tab_deathsPerOneMillion">Deaths per Million</string>
+
+    <!-- card data -->
+    <string name="cases">Total cases</string>
+    <string name="todayCases">Cases today</string>
+    <string name="deaths">Total deaths</string>
+    <string name="todayDeaths">Deaths today</string>
+    <string name="recovered">Recovered</string>
+    <string name="active">Active cases</string>
+    <string name="critical">Critical</string>
+    <string name="casesPerOneMillion">Cases per 1 million</string>
+    <string name="deathsPerOneMillion">Deaths per 1 million</string>
 </resources>
