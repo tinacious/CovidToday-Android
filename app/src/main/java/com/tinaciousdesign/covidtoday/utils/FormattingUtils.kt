@@ -4,11 +4,10 @@ import java.text.NumberFormat
 import java.util.*
 import kotlin.math.roundToInt
 
-object FormattingUtils {
-    fun formatFloatWithThousandsDelimiter(value: Float, locale: Locale): String {
-        val numberFormat = NumberFormat.getInstance(locale)
-        val intValue = value.roundToInt()
 
-        return numberFormat.format(intValue)
-    }
+fun formatFloatWithThousandsDelimiter(value: Float, locale: Locale): String {
+    val numberFormat = NumberFormat.getInstance(locale)
+    val intValue = value.roundToInt()
+
+    return numberFormat.format(intValue)
 }
