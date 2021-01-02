@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView style="?android:textAppearanceMedium"
-        android:id="@+id/testingText"
-        android:padding="16dp"
-        android:lineSpacingMultiplier="1.2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/countriesList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TESTING" />
-
-</ScrollView>
+        android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>

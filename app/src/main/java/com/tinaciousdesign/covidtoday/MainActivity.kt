@@ -13,7 +13,6 @@ import com.tinaciousdesign.covidtoday.ui.main.AppFragmentStateAdapter
 import com.tinaciousdesign.covidtoday.viewmodels.MainViewModel
 
 class MainActivity : FragmentActivity() {
-//class MainActivity : FragmentActivity() {
     private lateinit var mViewPager: ViewPager2
     private lateinit var mTabTexts: List<String>
 

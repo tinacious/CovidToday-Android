@@ -5,18 +5,26 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.tinaciousdesign.covidtoday.R
-import com.tinaciousdesign.covidtoday.data.getTabs
+import com.tinaciousdesign.covidtoday.adapters.CountriesAdapter
+import com.tinaciousdesign.covidtoday.databinding.FragmentPageBinding
 import com.tinaciousdesign.covidtoday.viewmodels.MainViewModel
 
 
 class PageFragment private constructor(): Fragment() {
 
-    private lateinit var testingText: TextView
+//    private lateinit var testingText: TextView
     private lateinit var mMainViewModel: MainViewModel
+
+    private lateinit var mRecyclerView: RecyclerView
+    private lateinit var mAdapter: CountriesAdapter
+
+    private var _binding: FragmentPageBinding? = null
+    private val binding get() = _binding!!
 
     companion object {
         private const val TAG = "PageFragment"
@@ -39,12 +47,13 @@ class PageFragment private constructor(): Fragment() {
         val position = requireArguments().getInt(BUNDLE_EXTRA_POSITION)
         currentPosition = position
 
-        testingText = view.findViewById(R.id.testingText)
+//        val tab = getTabs(requireContext())[position]
+//        Log.d(TAG, "tab: $tab")
 
-        val tab = getTabs(requireContext())[position]
-        Log.d(TAG, "tab: $tab")
+//        testingText = view.findViewById(R.id.testingText)
+//        testingText.text = "tab: $tab at $position"
 
-        testingText.text = "tab: $tab at $position"
+        initViews(view)
 
         mMainViewModel = ViewModelProvider(requireActivity())
             .get(MainViewModel::class.java)
@@ -55,23 +64,34 @@ class PageFragment private constructor(): Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_page, container, false)
+        _binding = FragmentPageBinding.inflate(inflater, container, false)
+        return binding.root
+//        return inflater.inflate(R.layout.fragment_page, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         initObservers()
-        initViews()
     }
 
     private fun initObservers() {
         mMainViewModel.countries.observe(requireActivity(), {
             Log.d(TAG, "Here 2 - ${it?.size}")
+            mAdapter.updateData(it)
         })
     }
 
-    private fun initViews() {
-        // TODO: Adapter things
+    private fun initViews(view: View) {
+        mRecyclerView = binding.countriesList
+        mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        mAdapter = CountriesAdapter()
+        mRecyclerView.adapter = mAdapter
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
