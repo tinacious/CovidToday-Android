@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         app:elevation="0dp"
         android:fitsSystemWindows="true"
-        android:theme="@style/Theme.CovidToday.AppBarOverlay">
+        android:theme="@style/Theme.CovidToday.AppBarOverlay"
+        android:background="@color/crimson">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/appBar1"
