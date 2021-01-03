@@ -1,7 +1,5 @@
 package com.tinaciousdesign.covidtoday.data
 
-import com.tinaciousdesign.covidtoday.networking.CountryInfoResponse
-
 data class Country(
     val active: Float,
     val activePerOneMillion: Float,
@@ -14,9 +12,11 @@ data class Country(
     val recovered: Float,
     val recoveredPerOneMillion: Float,
     val country: String,
-    val countryInfo: CountryInfoResponse,
+    val countryInfo: CountryInfo,
     val todayDeaths: Float,
     val todayCases: Float,
     val todayRecovered: Float,
 //    val updated: // Epoch time stamp
 )
+
+data class CountryInfo(val flag: String, val _id: Int)
