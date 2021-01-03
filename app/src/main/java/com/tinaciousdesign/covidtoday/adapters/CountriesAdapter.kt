@@ -1,6 +1,5 @@
 package com.tinaciousdesign.covidtoday.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +20,17 @@ class CountriesAdapter() : RecyclerView.Adapter<CountriesAdapter.CountriesViewHo
         data.clear()
         data.addAll(newData)
         notifyDataSetChanged()
+
+//        val self = this
+//        GlobalScope.launch(Dispatchers.IO) {
+//            val result = DiffUtil.calculateDiff(CountriesDiffUtilCallback(data, newData))
+//
+//            launch(Dispatchers.Main) {
+//                result.dispatchUpdatesTo(self)
+//                data.clear()
+//                data.addAll(newData)
+//            }
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountriesViewHolder {
@@ -38,7 +48,6 @@ class CountriesAdapter() : RecyclerView.Adapter<CountriesAdapter.CountriesViewHo
 
     override fun getItemId(position: Int): Long {
         val country = data[position]
-        Log.i(TAG, "getItemId() called with: position = $position, country: ${country.country}, country id: ${country.countryInfo._id}")
         return country.countryInfo._id.toLong()
     }
 
