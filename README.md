@@ -9,7 +9,7 @@ Covid Today is an Android app based off of the web version here: https://codepen
 
 ## Download
 
-Download the [AppCenter](https://install.appcenter.ms/users/info-145/apps/covid-today/distribution_groups/everybody/releases/1) build.
+Download the [AppCenter](https://install.appcenter.ms/users/info-145/apps/covid-today/distribution_groups/everybody) build.
 
 <img src="images/AppCenter-icon.png" width="160" style="width: 160px" />
 
