@@ -327,6 +327,9 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="1,000,123" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Lower padding -->
+            <View android:layout_width="wrap_content" android:layout_height="6dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

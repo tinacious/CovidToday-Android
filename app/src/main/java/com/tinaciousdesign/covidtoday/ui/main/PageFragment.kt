@@ -94,7 +94,7 @@ class PageFragment private constructor() : Fragment() {
                 }
             }
         })
-}
+    }
 
     private fun initViews(view: View) {
         mRecyclerView = binding.countriesList
