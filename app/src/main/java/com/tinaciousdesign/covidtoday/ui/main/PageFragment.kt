@@ -14,6 +14,7 @@ import com.tinaciousdesign.covidtoday.data.Country
 import com.tinaciousdesign.covidtoday.data.TabIndex
 import com.tinaciousdesign.covidtoday.databinding.FragmentPageBinding
 import com.tinaciousdesign.covidtoday.utils.CountriesDiffUtilCallback
+import com.tinaciousdesign.covidtoday.utils.sortCountriesForTab
 import com.tinaciousdesign.covidtoday.viewmodels.MainViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -78,7 +79,7 @@ class PageFragment private constructor() : Fragment() {
         mMainViewModel.countries.observe(requireActivity(), {
             GlobalScope.launch(Dispatchers.IO) {
                 val oldItems = mAdapter.data
-                val sorted = sortCountriesForTab(it)
+                val sorted = sortCountriesForTab(it, currentPosition)
                 val result = DiffUtil.calculateDiff(CountriesDiffUtilCallback(oldItems, sorted))
 
                 launch(Dispatchers.Main) {
@@ -109,18 +110,4 @@ class PageFragment private constructor() : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    private fun sortCountriesForTab(countries: List<Country>): List<Country> =
-        when (currentPosition) {
-            TabIndex.CASES_TODAY.ordinal -> countries.sortedByDescending { it.todayCases }
-            TabIndex.DEATHS_TODAY.ordinal -> countries.sortedByDescending { it.todayDeaths }
-            TabIndex.ALL_CASES.ordinal -> countries.sortedByDescending { it.cases }
-            TabIndex.ALL_DEATHS.ordinal -> countries.sortedByDescending { it.deaths }
-            TabIndex.RECOVERED.ordinal -> countries.sortedByDescending { it.recovered }
-            TabIndex.ACTIVE.ordinal -> countries.sortedByDescending { it.active }
-            TabIndex.CRITICAL.ordinal -> countries.sortedByDescending { it.critical }
-            TabIndex.CASES_PER_MILLION.ordinal -> countries.sortedByDescending { it.casesPerOneMillion }
-            TabIndex.DEATHS_PER_MILLION.ordinal -> countries.sortedByDescending { it.deathsPerOneMillion }
-            else -> countries
-        }
 }
