@@ -20,17 +20,6 @@ class CountriesAdapter() : RecyclerView.Adapter<CountriesAdapter.CountriesViewHo
         data.clear()
         data.addAll(newData)
         notifyDataSetChanged()
-
-//        val self = this
-//        GlobalScope.launch(Dispatchers.IO) {
-//            val result = DiffUtil.calculateDiff(CountriesDiffUtilCallback(data, newData))
-//
-//            launch(Dispatchers.Main) {
-//                result.dispatchUpdatesTo(self)
-//                data.clear()
-//                data.addAll(newData)
-//            }
-//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountriesViewHolder {

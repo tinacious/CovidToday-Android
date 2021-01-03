@@ -3,6 +3,9 @@ package com.tinaciousdesign.covidtoday.utils
 import androidx.recyclerview.widget.DiffUtil
 import com.tinaciousdesign.covidtoday.data.Country
 
+/**
+ * For comparing adapter data
+ */
 class CountriesDiffUtilCallback(
     private val newList: List<Country>,
     private val oldList: List<Country>
