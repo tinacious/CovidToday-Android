@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Covid Hoy</string>
+
+    <!-- menu items -->
+    <string name="menu_help">Sobre la aplicación</string>
+
+    <!-- dialogs -->
+    <string name="info_open_title">Más información</string>
+    <string name="info_open_description">¿Quiere ver más información sobre la aplicación? El enlace va a abrir en su navegador externo.</string>
+
+    <!-- tabs -->
+    <string name="tab_cases">Casos total</string>
+    <string name="tab_todayCases">Casos hoy</string>
+    <string name="tab_deaths">Muertos total</string>
+    <string name="tab_todayDeaths">Muertos hoy</string>
+    <string name="tab_recovered">Recuperados</string>
+    <string name="tab_active">Activos</string>
+    <string name="tab_critical">Casos extremos</string>
+    <string name="tab_casesPerOneMillion">Casos por millón</string>
+    <string name="tab_deathsPerOneMillion">Muertos por millón</string>
+
+    <!-- card data -->
+    <string name="cases">Casos total</string>
+    <string name="todayCases">Casos hoy</string>
+    <string name="deaths">Muertos total</string>
+    <string name="todayDeaths">Muertos hoy</string>
+    <string name="recovered">Recuperados</string>
+    <string name="active">Casos activos</string>
+    <string name="critical">Casos extremos</string>
+    <string name="casesPerOneMillion">Casos por 1 millón</string>
+    <string name="deathsPerOneMillion">Muertos por 1 millón</string>
+</resources>
