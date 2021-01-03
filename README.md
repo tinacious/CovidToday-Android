@@ -6,6 +6,7 @@ Covid Today is an Android app based off of the web version here: https://codepen
 
 <img src="images/covid-today.png" width="340" style="width: 340px" />
 
+![demo](https://cdn.hashnode.com/res/hashnode/image/upload/v1609654665977/RbwvI2u66.gif?auto=format,compress&gif-q=60)
 
 ## Download
 
