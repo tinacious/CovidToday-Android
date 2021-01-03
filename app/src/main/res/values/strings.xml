@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Covid Today</string>
 
+    <!-- menu items -->
     <string name="menu_help">About</string>
+
+    <!-- dialogs -->
+    <string name="info_open_title">More info</string>
+    <string name="info_open_description">Would you like to visit the web page in your default browser to learn more about the app?</string>
 
     <!-- tabs -->
     <string name="tab_cases">All Cases</string>
