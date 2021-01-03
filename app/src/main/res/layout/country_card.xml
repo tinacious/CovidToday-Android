@@ -17,6 +17,7 @@
         android:layout_marginStart="@dimen/card_margin"
         android:layout_marginTop="@dimen/card_margin"
         android:layout_marginEnd="@dimen/card_margin"
+        android:layout_marginBottom="@dimen/card_margin"
         android:layout_gravity="center_horizontal">
 
         <LinearLayout
@@ -326,12 +327,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="1,000,123" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!-- Lower padding -->
-            <View android:layout_width="wrap_content" android:layout_height="6dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <View android:layout_width="wrap_content" android:layout_height="8dp" />
-
 </LinearLayout>
