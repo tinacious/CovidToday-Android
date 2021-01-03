@@ -10,6 +10,3 @@ interface ApiService {
     @GET("countries")
     fun getCountries(@Query("sort") sortCriteria: String): Call<List<Country>>
 }
-
-
-

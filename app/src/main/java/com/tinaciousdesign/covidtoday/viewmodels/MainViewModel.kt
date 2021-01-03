@@ -13,7 +13,7 @@ class MainViewModel: ViewModel() {
     val countries: LiveData<List<Country>>
         get() = _countries
 
-    private val repository = CountriesRepository.getInstance()
+    private val repository = CountriesRepository.instance
 
     init {
         fetchCountriesForSortCriteria(SortCriteria.TodayCases)

@@ -8,11 +8,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiClient {
     companion object {
         private var mRetrofit: Retrofit? = null
-        var httpClient: OkHttpClient? = null
+        private var httpClient: OkHttpClient? = null
         private val API_BASE_URL = "https://disease.sh/v2/"
 
         @JvmStatic
-        fun getInstance(): Retrofit? {
+        fun getInstance(): Retrofit {
             if (mRetrofit == null) {
                 val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()
                 mRetrofit = Retrofit.Builder()
@@ -22,7 +22,7 @@ class ApiClient {
                     .build()
             }
 
-            return mRetrofit
+            return mRetrofit!!
         }
 
         private fun initOkHttp(): OkHttpClient {
