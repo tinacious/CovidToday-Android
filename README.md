@@ -4,7 +4,14 @@
 
 Covid Today is an Android app based off of the web version here: https://codepen.io/tinacious/full/eYNbEoE
 
-<img src="covid-today.png" width="340" style="width: 340px" />
+<img src="images/covid-today.png" width="340" style="width: 340px" />
+
+
+## Download
+
+Download the [AppCenter](https://install.appcenter.ms/users/info-145/apps/covid-today/distribution_groups/everybody/releases/1) build.
+
+<img src="images/AppCenter-icon.png" width="160" style="width: 160px" />
 
 
 ## Attributions and Credits
