@@ -15,7 +15,10 @@ import com.tinaciousdesign.covidtoday.data.TabIndex
 import com.tinaciousdesign.covidtoday.databinding.FragmentPageBinding
 import com.tinaciousdesign.covidtoday.utils.CountriesDiffUtilCallback
 import com.tinaciousdesign.covidtoday.viewmodels.MainViewModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class PageFragment private constructor() : Fragment() {
