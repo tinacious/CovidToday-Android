@@ -9,7 +9,7 @@ class ApiClient {
     companion object {
         private var mRetrofit: Retrofit? = null
         var httpClient: OkHttpClient? = null
-        private val API_BASE_URL = "https://corona.lmao.ninja/v2/"
+        private val API_BASE_URL = "https://disease.sh/v2/"
 
         @JvmStatic
         fun getInstance(): Retrofit? {

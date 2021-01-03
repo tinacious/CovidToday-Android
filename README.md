@@ -14,9 +14,11 @@ Covid Today is an Android app based off of the web version here: https://codepen
 The source of the API data is from this open-source repository: https://github.com/disease-sh/API
 
 
-### Illustration
+### App icon illustration
 
 <a href="https://www.vectorstock.com/royalty-free-vector/corona-virus-covid-19-2019-ncov-template-design-vector-30132318" target="_blank">Vector image by VectorStock / soponyono</a>
+
+Modified by me.
 
 ### Icons
 
